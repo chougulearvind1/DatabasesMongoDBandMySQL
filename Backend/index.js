@@ -18,13 +18,13 @@ app.listen(5000,async () => {
        console.log('MYSQL Connected ....');
      })
  })
-
+// get all task
  app.get('/tasks',async (req,res) => { 
     let [result]=await  db.query('select * from tasks');
     res.json(result)
   })
 
-
+// add task
   app.post('/tasks', async (req,res) => { 
     const {Task}=req.body;
     if(!Task){
@@ -36,7 +36,7 @@ app.listen(5000,async () => {
       res.json({Success:true})
    })
 
-
+    //delete user selectd task 
    app.delete('/tasks', async (req,res) => { 
     const Task=req.body;
     if(!Task){
@@ -50,7 +50,7 @@ app.listen(5000,async () => {
      
     res.json({Success:true})
     })
-
+    //clear all record from mysql  if user close api or refresh in frontend 
     app.post('/clean', async (req,res) => { 
       console.log("clean is called ");
       try {   

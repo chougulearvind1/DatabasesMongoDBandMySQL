@@ -28956,10 +28956,8 @@ function App() {
     var handleBeforeUnload = function handleBeforeUnload() {
       navigator.sendBeacon('http://localhost:5000/clean');
     };
-    window.addEventListener('beforeunload', handleBeforeUnload);
-    return function () {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-    };
+    window.addEventListener('unload', handleBeforeUnload);
+    return function () {};
   }, []);
   var AddTask = function AddTask() {
     fetch('http://localhost:5000/tasks', {

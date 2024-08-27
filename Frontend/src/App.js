@@ -12,9 +12,9 @@ function App() {
      const handleBeforeUnload = () => {      
       navigator.sendBeacon('http://localhost:5000/clean');   
     };
-     window.addEventListener('beforeunload',handleBeforeUnload )
+     window.addEventListener('unload',handleBeforeUnload )
     return () => {
-        window.removeEventListener('beforeunload',handleBeforeUnload)
+        
 
     }
 
